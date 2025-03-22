@@ -1,7 +1,5 @@
 IntQuiz
 
-
-
 Test your technical knowledge with IntQuiz! 🚀
 
 Features
