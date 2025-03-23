@@ -1,4 +1,4 @@
-IntQuiz
+#IntQuiz by sarika 
 
 IntQuiz is a technical quiz platform designed for students. It features a 30-minute timer, green buttons, and a light black background for a smooth experience.
 
