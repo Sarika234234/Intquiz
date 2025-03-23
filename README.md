@@ -1,60 +1,19 @@
 IntQuiz
 
-Test your technical knowledge with IntQuiz! 🚀
-
-Features
-
-✔️ 30-minute timer ⏳
-✔️ Green buttons ✅
-✔️ Light black background 🖤
-✔️ Score display with correct (green) and incorrect (red) answers
-
-Live Demo
-
-🔗 View IntQuiz
-
-Technologies Used
-
-HTML
-
-CSS
-
-JavaScript
-
-
-Installation
-
-1. Clone the repository:
-
-git clone https://github.com/ika234234/IntQuiz.git
-
-
-2. Open index.html in a browser.
-
-
+IntQuiz is a technical quiz platform designed for students. It features a 30-minute timer, green buttons, and a light black background for a smooth experience.
 
 How to Use
 
-1. Start the quiz and answer 10 questions.
+1. Start the quiz.
 
 
-2. The timer counts down from 30 minutes.
+2. Answer 10 questions within the time limit.
 
 
-3. At the end, your score is displayed with green (correct) and red (incorrect) answers.
+3. See your final score with correct and incorrect answers.
 
 
 
-Contributing
+Enjoy testing your knowledge with IntQuiz!
 
-Feel free to fork this repository and submit pull requests!
-
-License
-
-📜 MIT License
-
-
----
-
-Let me know if you want any modifications! 🚀
 
