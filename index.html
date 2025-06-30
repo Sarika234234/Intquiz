@@ -1,1 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IntQuiz</title>
+  <style>
+    body {
+      background-color: #222;
+      color: white;
+      font-family: Arial, sans-serif;
+      padding: 20px;
+      text-align: center;
+    }
 
+    .quiz-container {
+      background-color: #333;
+      padding: 20px;
+      border-radius: 10px;
+      display: inline-block;
+      width: 90%;
+      max-width: 600px;
+    }
+
+    h1 {
+      color: #00ff88;
+    }
+
+    #timer {
+      font-size: 18px;
+      margin-bottom: 20px;
+    }
+
+    button {
+      background-color: #00ff88;
+      color: black;
+      padding: 10px 20px;
+      margin-top: 20px;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+
+    button:hover {
+      background-color: #00cc66;
+    }
+
+    .question {
+      text-align: left;
+      margin: 15px 0;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="quiz-container">
+    <h1>IntQuiz</h1>
+    <div id="timer">Time Left: 30:00</div>
+    <div id="quiz"></div>
+    <button id="submit">Submit</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    const quizData = [
+      {
+        question: "1. What does HTML stand for?",
+        options: ["Hyper Trainer Marking Language", "HyperText Markup Language", "HyperText Markdown Language", "None"],
+        answer: "HyperText Markup Language"
+      },
+      {
+        question: "2. What is CSS used for?",
+        options: ["Structure", "Database", "Styling", "Logic"],
+        answer: "Styling"
+      },
+      {
+        question: "3. What does JS stand for?",
+        options: ["Java Structure", "JavaScript", "Just Script", "Jumpy Script"],
+        answer: "JavaScript"
+      },
+      {
+        question: "4. Which tag is used to define a paragraph in HTML?",
+        options: ["<p>", "<div>", "<span>", "<section>"],
+        answer: "<p>"
+      },
+      {
+        question: "5. What is the correct way to link a CSS file?",
+        options: ["<style src='style.css'>", "<css href='style.css'>", "<link rel='stylesheet' href='style.css'>", "<script href='style.css'>"],
+        answer: "<link rel='stylesheet' href='style.css'>"
+      },
+      {
+        question: "6. Which symbol is used for single-line comments in JavaScript?",
+        options: ["//", "/* */", "#", "<!-- -->"],
+        answer: "//"
+      },
+      {
+        question: "7. Which of the following is not a JavaScript data type?",
+        options: ["Number", "String", "Boolean", "Float"],
+        answer: "Float"
+      },
+      {
+        question: "8. What does DOM stand for?",
+        options: ["Document Object Model", "Data Object Model", "Desktop Object Management", "None of the above"],
+        answer: "Document Object Model"
+      },
+      {
+        question: "9. How do you create a function in JavaScript?",
+        options: ["function myFunction()", "create myFunction()", "function:myFunction()", "define myFunction()"],
+        answer: "function myFunction()"
+      },
+      {
+        question: "10. What is the default file extension for JavaScript files?",
+        options: [".js", ".java", ".json", ".txt"],
+        answer: ".js"
+      }
+    ];
+
+    let timeLeft = 30 * 60; // 30 minutes
+    const quiz = document.getElementById('quiz');
+    const timer = document.getElementById('timer');
+    const submitBtn = document.getElementById('submit');
+    const result = document.getElementById('result');
+
+    function startTimer() {
+      const interval = setInterval(() => {
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        timer.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+        timeLeft--;
+
+        if (timeLeft < 0) {
+          clearInterval(interval);
+          submitQuiz();
+        }
+      }, 1000);
+    }
+
+    function loadQuiz() {
+      quizData.forEach((q, index) => {
+        const div = document.createElement('div');
+        div.classList.add('question');
+        div.innerHTML = `<p><b>${q.question}</b></p>`;
+
+        q.options.forEach(opt => {
+          const label = document.createElement('label');
+          label.innerHTML = `<input type="radio" name="q${index}" value="${opt}" /> ${opt}`;
+          div.appendChild(label);
+          div.appendChild(document.createElement('br'));
+        });
+
+        quiz.appendChild(div);
+      });
+    }
+
+    function submitQuiz() {
+      let score = 0;
+      quizData.forEach((q, index) => {
+        const selected = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selected && selected.value === q.answer) {
+          score++;
+        }
+      });
+
+      result.innerHTML = `<h2>Your Score: ${score}/${quizData.length}</h2>`;
+    }
+
+    submitBtn.addEventListener('click', submitQuiz);
+
+    loadQuiz();
+    startTimer();
+  </script>
+</body>
+</html>
