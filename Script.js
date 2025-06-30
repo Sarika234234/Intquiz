@@ -1,4 +1,3 @@
-
 const allQuestions = {
   default: [
     { q: "What does CPU stand for?", options: ["Central Processing Unit", "Computer Processing Unit", "Central Program Unit", "Control Processing Unit"], answer: 0 },
