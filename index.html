@@ -4,80 +4,56 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>IntQuiz</title>
-  <style>
-    body {
-      background-color: #1a1a1a;
-      color: white;
-      font-family: Arial, sans-serif;
-      text-align: center;
-      padding: 20px;
-    }
-    h1 {
-      color: #00ff66;
-      font-size: 2.5em;
-    }
-    .timer {
-      font-size: 1.5em;
-      color: #00ff66;
-      margin: 10px 0;
-    }
-    .question-box {
-      background-color: #2a2a2a;
-      border: 2px solid #00ff66;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 500px;
-      margin: 20px auto;
-      box-shadow: 0 0 15px #00ff66;
-    }
-    .question {
-      font-size: 1.2em;
-      margin-bottom: 15px;
-    }
-    .option {
-      display: block;
-      background-color: #00ff66;
-      color: black;
-      border: none;
-      border-radius: 8px;
-      padding: 12px;
-      margin: 10px 0;
-      cursor: pointer;
-      transition: 0.2s ease;
-    }
-    .option:hover {
-      background-color: #00cc55;
-    }
-  </style>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <h1>Welcome to IntQuiz</h1>
-  <p>Test your technical knowledge with IntQuiz.</p>
-  <div class="timer" id="timer">Time Left: 30:00</div>
+  <div class="container">
+    <h1>Welcome to IntQuiz</h1>
+    <p>Test your technical knowledge with IntQuiz.</p>
+    
+    <div id="quiz-box" class="box">
+      <p id="question">Loading question...</p>
+      <div id="options"></div>
+    </div>
 
-  <div class="question-box">
-    <div class="question">What does CPU stand for?</div>
-    <button class="option">Central Processing Unit</button>
-    <button class="option">Computer Processing Unit</button>
-    <button class="option">Central Program Unit</button>
-    <button class="option">Control Processing Unit</button>
+    <div id="result-box" class="box" style="display: none;">
+      <h2>Quiz Completed!</h2>
+      <p>Correct Answers: <span id="correct-count">0</span></p>
+      <p>Wrong Answers: <span id="wrong-count">0</span></p>
+      <button onclick="startQuiz('ai')">Artificial Intelligence Quiz</button>
+      <button onclick="startQuiz('cyber')">Cyber Security Quiz</button>
+    </div>
   </div>
 
-  <script>
-    let time = 30 * 60;
-    const timerElement = document.getElementById("timer");
+  <script src="script.js"></script>
+</body>
+</html><!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>IntQuiz</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h1>Welcome to IntQuiz</h1>
+    <p>Test your technical knowledge with IntQuiz.</p>
+    
+    <div id="quiz-box" class="box">
+      <p id="question">Loading question...</p>
+      <div id="options"></div>
+    </div>
 
-    function updateTimer() {
-      const minutes = Math.floor(time / 60);
-      const seconds = time % 60;
-      timerElement.textContent = `Time Left: ${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
-      if (time > 0) {
-        time--;
-        setTimeout(updateTimer, 1000);
-      }
-    }
+    <div id="result-box" class="box" style="display: none;">
+      <h2>Quiz Completed!</h2>
+      <p>Correct Answers: <span id="correct-count">0</span></p>
+      <p>Wrong Answers: <span id="wrong-count">0</span></p>
+      <button onclick="startQuiz('ai')">Artificial Intelligence Quiz</button>
+      <button onclick="startQuiz('cyber')">Cyber Security Quiz</button>
+    </div>
+  </div>
 
-    updateTimer();
-  </script>
+  <script src="script.js"></script>
 </body>
 </html>
